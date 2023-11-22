@@ -1,4 +1,4 @@
-package lesson4;
+package by.academy.lesson4;
 
 public class EvenPrinter {
     public static void main(String[] args) {

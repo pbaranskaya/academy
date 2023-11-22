@@ -23,5 +23,7 @@ public class StringPool {
         System.out.println("abc".compareTo("bbc"));
         System.out.println("Polina".charAt(0));
 
+
+
     }
 }

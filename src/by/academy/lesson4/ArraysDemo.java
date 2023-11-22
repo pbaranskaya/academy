@@ -1,5 +1,4 @@
-package lesson4;
-import java.util.Arrays;
+package by.academy.lesson4;
 
 public class ArraysDemo {
     public static void main(String[] args) {
