@@ -68,7 +68,6 @@ public class oop {
 //}
 
     public static String replaceEachOther(String str, String word, String replacement) {
-//        word = "\\Q" + word + "\\E";
         return str.replaceAll("(?siu)(" + word +".*?)" + word, "$1" + replacement);
     }
 

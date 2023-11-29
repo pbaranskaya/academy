@@ -1,6 +1,7 @@
 package by.academy.lesson8;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -9,6 +10,52 @@ public class Deal {
     User buyer;
     Product[] products;
     LocalDate dealDate;
+
+    public double calculateFullPrice() {
+        if (products == null) {
+            return 0;
+        }
+
+        double result = 0;
+        for (Product p : products) {
+            result += p.calculatePrice();
+        }
+        return result;
+    }
+
+
+    public void submit() {
+        double price = calculateFullPrice();
+        if (buyer.hasEnoughMoney(price)) {
+            printBill();
+            transferMoney(seller, buyer);
+            setDealDate(LocalDate.now());
+            System.out.println("Сделка совершена");
+        } else {
+            System.out.println("У покупателя нет столько денег: " + price);
+        }
+    }
+
+    private void transferMoney(User seller, User buyer) {
+        double fullPrice = 0;
+        for (Product p : products) {
+            fullPrice += p.calculatePrice();
+        }
+        buyer.setMoney(buyer.getMoney() - fullPrice);
+        seller.setMoney(seller.getMoney() + fullPrice);
+    }
+
+    private void printBill() {
+        for (Product p : products) {
+            System.out.println(p.getName() + p.calculatePrice());
+        }
+        System.out.println("========");
+        double fullPrice = 0;
+        for (Product p : products) {
+            fullPrice += p.calculatePrice();
+        }
+        System.out.println("Цена: " + fullPrice);
+    }
 
 
     public User getSeller() {

@@ -19,10 +19,12 @@ public class Box {
     }
 
 
-
     public Box() {
         super();
     }
+
+
+
 
     public Box(double height, double width, double depth) {
         this.height = height;
@@ -48,6 +50,12 @@ public class Box {
         return width * height * depth * 4;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Box{" +
+                "width=" + width +
+                ", height=" + height +
+                ", depth=" + depth +
+                '}';
+    }
 }

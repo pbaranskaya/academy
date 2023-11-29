@@ -14,6 +14,8 @@ public class User {
 //        super();
 //    }
 
+
+
     public void setMoney(double money) {
         this.money = money;
     }
@@ -60,4 +62,7 @@ public class User {
                 '}';
     }
 
+    public boolean hasEnoughMoney(double price) {
+        return money >= price;
+    }
 }
