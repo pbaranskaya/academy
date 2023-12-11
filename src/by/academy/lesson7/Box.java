@@ -1,6 +1,6 @@
 package by.academy.lesson7;
 
-public class Box {
+public abstract class Box {
 
     double width;
     double height;
@@ -23,7 +23,7 @@ public class Box {
         super();
     }
 
-
+    public abstract double discount();
 
 
     public Box(double height, double width, double depth) {
@@ -48,6 +48,12 @@ public class Box {
 
     public double calcVolume() {
         return width * height * depth * 4;
+    }
+
+
+    public void someMethod () {
+        super.toString();
+        calcVolume();
     }
 
     @Override

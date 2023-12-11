@@ -2,7 +2,7 @@ package by.academy.lesson7;
 
 public class BoxApp {
     public static void main(String[] args) {
-        Box myBox = new Box();
+        Box myBox = new ColorBox();
 // присвоить значение переменным экземпляра mybox
         myBox.width = 10;
         myBox.height = 20;
@@ -23,6 +23,13 @@ public class BoxApp {
 
         Box box3 = new ShipContainer(); // матрешка
         System.out.println(box3);
+
+
+        Box b1 = new HeavyBox(1,2,3);
+        Box b2 = new ColorBox(4, 5,6);
+
+//        System.out.println(HeavyBox.calcvolume(b1)); // ???
+
 
 
     }

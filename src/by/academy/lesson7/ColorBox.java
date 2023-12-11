@@ -27,6 +27,14 @@ public class ColorBox extends Box {
     }
 
     @Override
+    public double  discount() {
+        return 1;
+    }
+
+
+
+
+    @Override
     public String toString() {
         return "ColorBox{" +
                 "color='" + color + '\'' +

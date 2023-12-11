@@ -1,6 +1,6 @@
 package by.academy.lesson8;
 
-public class Apple {
+public class Apple extends Product{
 
     private String color;
 
