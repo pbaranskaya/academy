@@ -7,7 +7,9 @@ public class ShipContainer extends HeavyBox{
         super();
     }
 
-
+//    public double discount() {  нельзя
+//        return 1;
+//    }
 
     public String getShipnumber() {
         return shipnumber;

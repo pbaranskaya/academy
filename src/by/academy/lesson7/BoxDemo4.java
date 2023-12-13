@@ -7,7 +7,7 @@ public class BoxDemo4 {
 
     public static void main(String[] args) {
 
-        Box b = new Box();
+        Box b = new HeavyBox();
         ColorBox cBox = new ColorBox();
         HeavyBox heavyBox = new HeavyBox();
 

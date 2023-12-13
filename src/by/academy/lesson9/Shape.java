@@ -1,14 +1,18 @@
 package by.academy.lesson9;
 
 public abstract class Shape {
-
-    String color;
+    private String color;
 
     public Shape() {
         super();
     }
 
-    public abstract int draw();
+    public Shape(String color) {
+        super();
+        this.color = color;
+    }
+
+    public abstract void draw();
 
     public String getColor() {
         return color;
@@ -18,3 +22,5 @@ public abstract class Shape {
         this.color = color;
     }
 }
+
+
