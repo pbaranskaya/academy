@@ -25,7 +25,6 @@ public abstract class Product {
 
     public abstract double discount();
 
-
     public String getName() {
         return name;
     }
@@ -72,5 +71,4 @@ public abstract class Product {
                 ", quantity=" + quantity +
                 '}';
     }
-
 }

@@ -6,11 +6,10 @@ import java.util.Objects;
 
 public class Deal {
 
-    User seller;
-    User buyer;
-    Product[] products;
-    LocalDate dealDate;
-
+    private User seller;
+    private User buyer;
+    private Product[] products;
+    private LocalDate dealDate;
     protected final LocalDate deadlineDate = LocalDate.now().plusDays(10);
     private int current;
 
@@ -18,20 +17,31 @@ public class Deal {
         if (products == null) {
             return 0;
         }
-
         double result = 0;
-        for (Product p : products) {
-            result += p.calculatePrice();
+        for (int i = 0; i < current; i++) {
+            result += products[i].getPrice();
         }
         return result;
     }
+
+    public void deleteProduct (int index) {
+        if (index < 0 || index >= current) {
+            System.out.println("Введите правильный индекс");
+            return;
+        }
+        if (index != products.length - 1) {
+            System.arraycopy(products, index + 1, products, index, products.length - index - 1);
+        }
+        products[current-- - 1] = null;
+    }
+
 
     public void submit() {
         double price = calculateFullPrice();
         if (buyer.hasEnoughMoney(price)) {
             printBill();
             transferMoney(seller, buyer);
-            setDealDate(LocalDate.now());
+//            setDealDate(LocalDate.now());
             System.out.println("Сделка совершена");
         } else {
             System.out.println("У покупателя нет столько денег: " + price);
@@ -39,24 +49,28 @@ public class Deal {
     }
 
     private void transferMoney(User seller, User buyer) {
-        double fullPrice = 0;
-        for (Product p : products) {
-            fullPrice += p.calculatePrice();
-        }
-        buyer.setMoney(buyer.getMoney() - fullPrice);
-        seller.setMoney(seller.getMoney() + fullPrice);
+//        double fullPrice = 0;
+//        for (Product p : products) {
+//            fullPrice += p.calculatePrice();
+//        }
+        buyer.setMoney(buyer.getMoney() - calculateFullPrice());
+        seller.setMoney(seller.getMoney() + calculateFullPrice());
     }
 
     private void printBill() {
-        for (Product p : products) {
-            System.out.println(p.getName() + p.calculatePrice());
+        System.out.println("Чек:");
+        for (int i = 0; i < current; i++) {
+            System.out.println("Позиция: " + products[i] + " " + products[i].calculatePrice() + "$");
         }
-        System.out.println("========");
-        double fullPrice = 0;
-        for (Product p : products) {
-            fullPrice += p.calculatePrice();
-        }
-        System.out.println("Цена: " + fullPrice);
+//        System.out.println("========");
+//        double fullPrice = 0;
+//        for (Product p : products) {
+//            fullPrice += p.calculatePrice();
+//        }
+//        System.out.println("Цена: " + fullPrice);
+        System.out.println("Цена за все:  " + calculateFullPrice());
+        System.out.println("Дата сделки: "+ LocalDate.now());
+        System.out.println("Дата дедлайна сделки: " + deadlineDate);
     }
 
     private void grow() {
@@ -90,7 +104,7 @@ public class Deal {
 
     public void printProducts() {
         for (int i = 0; i < current; i++) {
-            System.out.println(i + " "  + products[i]);
+            System.out.println((i + 1) + " - " + products[i]);
         }
     }
 

@@ -6,116 +6,170 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class DealApp  {
+public class DealApp {
     private static final Validator EMAIL_VALIDATOR = new EmailValidator();
-private static final DateValidatorFormat1 date1 = new DateValidatorFormat1();
-private static final DateValidatorFormat2 date2 = new DateValidatorFormat2();
+    private static final Validator PHONE_VALIDATOR = new BelarussianPhoneValidator();
+    private static final DateValidatorFormat1 date1 = new DateValidatorFormat1();
+    private static final DateValidatorFormat2 date2 = new DateValidatorFormat2();
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Deal deal = new Deal();
+        System.out.println("Добро пожаловать в магазин");
 
-
-        Deal deal= new Deal();
-        System.out.println("Добро пожаловать");
-        while(true) {
+        while (true) {
+            System.out.println("Выбери действие");
+            printMainMenu(sc);
             String action = sc.next();
+
             switch (action) {
                 case "1":
-                    System.out.println("создаем продавца");
+                    System.out.println("Создаем продавца");
                     deal.setSeller(createUser(sc));
+                    continue;
                 case "2":
-                    System.out.println("создаем покупателя");
+                    System.out.println("Создаем покупателя");
                     deal.setBuyer(createUser(sc));
+                    continue;
                 case "3":
-                    //распечатать карзину продуктов
-                    deal.printProducts();
-                case "4":
-                    // добавить продукт в дил
-                    Product p = createProduct(sc);
-                    if(p != null) {
+                    // добавить продукт в сделку
+                    while (true){
+
+                        Product p = createProduct(sc);
+                    if (p != null) {
                         deal.add(p);
-                    }else {
-                        System.out.println("Зина отмена");
+                    } else {
+                        break ;
                     }
+                    }
+                    continue;
+                case "4":
+                    // распечатать корзину продуктов
+//                    sc.nextInt();
+                    System.out.println("Корзина:");
+                    deal.printProducts();
+                    continue;
                 case "5":
-                    //удалить продукт ил дил
+                    // удалить продукт из сделки
+                    System.out.println("Удалить позицию");
+                    deal.deleteProduct(sc.nextInt() - 1);
+                    continue;
                 case "0":
+                    // завершить сделку
+                    deal.submit();
                     break;
             }
         }
-
-
-
-
-//        switch () {
-//            case "1":
-//            case "2":
-//            case "3":
-//            case "4":
-//        }
     }
 
-    public Product createProduct(Scanner sc) {
+public static void printMainMenu(Scanner sc){
 
-        System.out.println("Ыыедите номер продукта для покупки");
-        System.out.println("1-огурец, 2-помидор, 3 самолет, 0 - для отмены");
+    System.out.println("Выберите действие: ");
+    System.out.println("1 - Создание продавца");
+    System.out.println("2 - Создание покупателя");
+    System.out.println("3 - Выбор продукта");
+    System.out.println("4 - Просмотр товаров");
+    System.out.println("5 - Удаление товара");
+    System.out.println("0 - Завершить сделку");
+
+
+}
+    public static Product createProduct(Scanner sc) {
+
+        System.out.println("Введите номер продукта для покупки");
+        System.out.println("b - ягода, c - торт, t - чай, stop - закончить сбор корзины");
         Product product = null;
 
-switch (sc.next()) {
-    case "1":
-        System.out.println("Введите количество");
-        int quantity = sc.nextInt();
-        product = new Tea(quantity, "green", "warm");
-}
-return product;
-    }
-    public static LocalDate parseFormat1 (String date) {
-        return LocalDate.now();
-    }
+        switch (sc.next().toLowerCase()) {
+            case "b":
+                System.out.println("Введите количество");
+                int quantity = sc.nextInt();
+                product = new Berry("Клубника", 1, quantity, "сладкая", "красная");
+                System.out.println(product);
+                break;
+            case "c":
+                System.out.println("Введите количество");
+                quantity = sc.nextInt();
+                product = new Cake("Наполеон", 2, quantity, "2 слоя", "с кремом");
+                System.out.println(product);
+                break;
+            case "t":
+                System.out.println("Введите количество");
+                quantity = sc.nextInt();
+                product = new Tea("Липтон", 3, quantity, "холодный", "с бергамотом");
+                System.out.println(product);
+                break;
 
-    public static LocalDate parseFormat2 (String date) {
-        return LocalDate.now();
-    }
-
-public static User createUser(Scanner sc) {
-    System.out.println("Ввод имени");
-    String name = sc.next();
-
-            System.out.println("Ввод email");
-            String email = null;
-            while(email== null) {
-
-                email = sc.next();
-              if(!EMAIL_VALIDATOR.validate(email)) {
-                email = null;
-                    System.out.println("email not correct enter again");
-              }
-            }
-
-            System.out.println("Ввод телефона");
-
-            System.out.println("Ввод дата рождения");
-            LocalDate date = null;
-            while(date == null) {
-                String dateStr = sc.nextLine();
-
-                if (date1.validate(dateStr)) {
-                    date = parseFormat1(dateStr);
-                } else if (date2.validate(dateStr)) {
-                    date = parseFormat1(dateStr);
-                } else {
-                    date  = null;
-                    System.out.println("Неправильная дата");
-                }
-            }
-
-            System.out.println("Ввод дата рождения");
+            case "stop":
+                System.out.println("Корзину собрали");
+                break;
+            default:
+                System.out.println("Not valid choice");
         }
-    User user = new User(name, , asdasd,asd,as,dasdas);
 
-    return user;
-}
+        return product;
+    }
 
 
+    public static LocalDate parseFormat1(String date) {
+        return LocalDate.now();
+    }
+
+    public static LocalDate parseFormat2(String date) {
+        return LocalDate.now();
+    }
+
+
+    public static User createUser(Scanner sc) {
+
+        System.out.println("Ввод имени");
+        String name = sc.next();
+
+        System.out.println("Ввод email");
+        String email = null;
+        while (email == null) {
+
+            email = sc.next();
+            if (!EMAIL_VALIDATOR.validate(email)) {
+                email = null;
+                System.out.println("Неверный email");
+            }
+        }
+
+        System.out.println("Ввод телефона");
+        String phone = null;
+        while (phone == null) {
+
+            phone = sc.next();
+            if (!PHONE_VALIDATOR.validate(phone)) {
+                phone = null;
+                System.out.println("Неверный телефон");
+            }
+        }
+
+        sc.nextLine();
+
+        System.out.println("Ввод даты рождения");
+        LocalDate date = null;
+        while (date == null) {
+            String dateStr = sc.nextLine();
+
+            if (date1.validate(dateStr)) {
+                date = parseFormat1(dateStr);
+            } else if (date2.validate(dateStr)) {
+                date = parseFormat2(dateStr);
+            } else {
+                date = null;
+                System.out.println("Неправильная дата");
+            }
+        }
+
+
+        System.out.println("Кошелек: ");
+        double money = sc.nextDouble();
+
+        User user = new User(name, money, date, phone, email);
+        return user;
+    }
 }

@@ -11,10 +11,4 @@ public class BelarussianPhoneValidator implements Validator {
         return p;
     }
 
-    public static void main(String[] args) {
-
-        Validator v = new BelarussianPhoneValidator();
-        System.out.println(v.validate("+37529111111111"));
-
-    }
 }

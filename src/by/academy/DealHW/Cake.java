@@ -2,14 +2,14 @@ package by.academy.DealHW;
 
 public class Cake extends Product {
 
-    private int tiers;
+    private String tiers;
     private String filling;
 
     public Cake () {
         super();
     }
 
-    public Cake (String name, double price, double quantity, int tiers, String filling) {
+    public Cake (String name, double price, double quantity, String tiers, String filling) {
         super(name, price, quantity);
         this.tiers = tiers;
         this.filling = filling;
@@ -26,11 +26,13 @@ public class Cake extends Product {
         }
     }
 
-    public int getTiers() {
+
+
+    public String getTiers() {
         return tiers;
     }
 
-    public void setTiers(int tiers) {
+    public void setTiers(String tiers) {
         this.tiers = tiers;
     }
 
@@ -42,11 +44,16 @@ public class Cake extends Product {
         this.filling = filling;
     }
 
+
+
     @Override
     public String toString() {
         return "Cake{" +
-                "tiers=" + tiers +
+                "tiers='" + tiers + '\'' +
                 ", filling='" + filling + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }

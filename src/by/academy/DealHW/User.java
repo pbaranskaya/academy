@@ -5,11 +5,29 @@ import java.util.Objects;
 
 public class User {
 
-    String name;
-    double money;
-    LocalDate dateOfBirth;
-    String phone;
-    String email;
+    private String name;
+    private double money;
+    private LocalDate dateOfBirth;
+    private String Phone;
+    private String Email;
+
+    public User () {
+        super();
+    }
+
+    public User (String name) {
+        super();
+        this.name = name;
+    }
+
+    public User (String name, double money, LocalDate dateOfBirth, String Phone, String Email) {
+        super();
+        this.name = name;
+        this.money = money;
+        this.dateOfBirth = dateOfBirth;
+        this.Phone = Phone;
+        this.Email = Email;
+    }
 
     public boolean hasEnoughMoney(double price) {
         return money >= price;

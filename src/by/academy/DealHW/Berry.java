@@ -15,16 +15,18 @@ public class Berry extends Product {
         this.color = color;
     }
 
-   @Override
-   public double discount() {
-       if (quantity < 10) {
-           return 1;
-       } else if (quantity < 20) {
-           return 0.8;
-       } else {
-           return 0.75;
-       }
-   }
+    @Override
+    public double discount() {
+        if (quantity < 10) {
+            return 1;
+        } else if (quantity < 20) {
+            return 0.8;
+        } else {
+            return 0.75;
+        }
+    }
+
+
 
     public String getTaste() {
         return taste;
@@ -47,6 +49,9 @@ public class Berry extends Product {
         return "Berry{" +
                 "taste='" + taste + '\'' +
                 ", color='" + color + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }
