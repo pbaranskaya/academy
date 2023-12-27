@@ -1,15 +1,17 @@
 package by.academy.lesson11;
 
 public enum Seasons {
-    WINTER, SPRING, SUMMER, AUTUMN;
-
-    final String favouriteSeason;
+    WINTER(-1), SPRING(15), SUMMER(25), AUTUMN(5);
 
 
+    final int temperature;
 
-    Seasons(String favouriteSeason) {
-        this.favouriteSeason = favouriteSeason;
+
+    Seasons(int temperature) {
+        this.temperature = temperature;
     }
 
+    public void myFavouriteSeason () {
+    }
 
 }

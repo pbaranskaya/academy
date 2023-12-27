@@ -1,8 +1,9 @@
 package by.academy.DealHW;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class Product {
+public abstract class Product implements Serializable {
 
     protected String name;
     protected double price;
