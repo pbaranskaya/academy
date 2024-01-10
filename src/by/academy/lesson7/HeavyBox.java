@@ -33,6 +33,15 @@ public class HeavyBox  extends Box{
 //        return super.calcVolume() - 1; // вариант
     }
 
+    public double getWeight() {
+        return weight;
+    }
 
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 
+    public String getNumber() {
+        return number;
+    }
 }

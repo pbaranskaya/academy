@@ -10,7 +10,6 @@ public class Berry extends Product {
         super();
     }
 
-
     public Berry (String name, double price, double quantity, String taste, String color) {
         super(name, price, quantity);
         this.taste = taste;
