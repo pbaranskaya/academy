@@ -1,4 +1,5 @@
 package by.academy.DealHW;
+@Producer(startYear = 2020, country = "Укр", founderFullName = "c")
 
 public class Cake extends Product {
 

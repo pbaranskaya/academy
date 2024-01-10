@@ -10,4 +10,5 @@ public class Calculator {
         double result = Calculator.sum(1,4.5);
         System.out.println(result);
     }
+
 }

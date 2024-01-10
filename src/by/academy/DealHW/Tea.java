@@ -1,5 +1,7 @@
 package by.academy.DealHW;
 
+@Producer(startYear = 2022, country = "РФ", founderFullName = "b")
+
 public class Tea extends Product {
 
     private String temperature;

@@ -1,4 +1,5 @@
 package by.academy.DealHW;
+@Producer(startYear = 2021, country = "РБ", founderFullName = "a")
 
 public class Berry extends Product {
 
@@ -8,6 +9,7 @@ public class Berry extends Product {
     public Berry () {
         super();
     }
+
 
     public Berry (String name, double price, double quantity, String taste, String color) {
         super(name, price, quantity);

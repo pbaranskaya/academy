@@ -9,6 +9,7 @@ public abstract class Product implements Serializable {
     protected double price;
     protected double quantity;
 
+
     public Product() {
         super();
     }
