@@ -9,7 +9,6 @@ import java.util.Objects;
 public class ArrayListTest {
     public static void main(String[] args) {
 
-
         ArrayList<HeavyBox> boxes= new ArrayList<>();
 
         HeavyBox b1 = new HeavyBox(1,2,3);
@@ -27,10 +26,11 @@ public class ArrayListTest {
 
         boxes.remove(boxes.size() - 1);
 
-        boxes.clear();
-
         Object[] array = boxes.toArray();
         System.out.println(Arrays.toString(array));
+
+
+        boxes.clear();
 
 
     }
