@@ -1,4 +1,4 @@
-package lesson15;
+package by.academy.lesson15;
 
 import java.util.Iterator;
 
@@ -42,3 +42,4 @@ public class CustomLinkedListDemo {
 
     }
 }
+

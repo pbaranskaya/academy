@@ -1,11 +1,11 @@
-package lesson15;
+package by.academy.lesson15;
 
 import java.util.HashSet;
 
 public class HashSetDemo {
     public static void main(String[] args) {
 
-        HashSet <BadCat> set = new HashSet<>();
+        HashSet<BadCat> set = new HashSet<>();
 //        set.add("Минск");
 //        set.add("Витебск");
 //        set.add("Гродно");

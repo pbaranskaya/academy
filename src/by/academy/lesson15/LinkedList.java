@@ -1,15 +1,13 @@
-package lesson15;
+package by.academy.lesson15;
 
 import java.util.Iterator;
 
-public class LinkedList<T>  implements  Iterable<T>{
+public class LinkedList<T>  implements  Iterable<T> {
 
     private Node<T> head;
     private Node<T> tail;
 
     int size;
-
-
 
     public void add(T value) {
         if (tail == null) {
@@ -55,7 +53,6 @@ public class LinkedList<T>  implements  Iterable<T>{
             size--;
         }
     }
-
 
     public void removeTail() {
         if (size > 0) {
@@ -123,29 +120,6 @@ public class LinkedList<T>  implements  Iterable<T>{
         return node != null ? node.value : null;
     }
 
-
-
-//    public T get(int index) {
-//
-//        if (index < 0 || index > size) {
-//            System.err.println("неправильный индекс size " + size + " index " + index);
-//            return null;
-//        }
-//        int counter = 0;
-//        Node<T> current = head;
-//
-//        do {
-//
-//            if (index == counter) {
-//                return current.value;
-//            }
-//            current = current.next;
-//            counter++;
-//        } while (current != null);
-//
-//        return null;
-//    }
-
     public void print() {
         Node<T> current = head;
         while (current != null) {
@@ -183,4 +157,9 @@ public class LinkedList<T>  implements  Iterable<T>{
             this.value = val;
         }
     }
+
+
 }
+
+
+

@@ -1,4 +1,4 @@
-package lesson15;
+package by.academy.lesson15;
 
 public class BadCat {
     private String name;
@@ -28,4 +28,5 @@ public class BadCat {
                 '}';
     }
 }
+
 

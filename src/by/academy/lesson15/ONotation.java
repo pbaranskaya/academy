@@ -1,4 +1,4 @@
-package lesson15;
+package by.academy.lesson15;
 
 public class ONotation {
     public static void main(String[] args) {
