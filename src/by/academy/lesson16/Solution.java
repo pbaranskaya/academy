@@ -54,12 +54,11 @@ public class Solution  {
 
     public static DoublyLinkedListNode reverse(DoublyLinkedListNode tail) {
         DoublyLinkedListNode temp = tail;
-        DoublyLinkedListNode newTail = tail;
+        DoublyLinkedListNode newHead = tail;
         while (temp != null) {
             DoublyLinkedListNode next = temp.next; // создать элемент некст (0)
             temp.next = temp.prev; // поменять местами ссылки
             temp.prev = next; // поменять местами ссылки
-            newTail = temp; // назначить теил
             temp = temp.next; // присвоить новое значение
 
 //            DoublyLinkedListNode prev = temp.prev;
@@ -67,7 +66,7 @@ public class Solution  {
 //            temp.next = prev;
 //            temp = temp.next;
         }
-        return newTail;
+        return newHead;
     }
 
 
