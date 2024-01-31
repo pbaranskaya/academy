@@ -1,4 +1,4 @@
-package Avia;
+package by.academy.Avia;
 
 public class WarPlane extends Plane {
 

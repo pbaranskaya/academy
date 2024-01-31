@@ -1,4 +1,4 @@
-package lesson17.Exeption;
+package by.academy.lesson17.Exeption;
 
 public class WrongPasswordException extends Exception{
     private String detail;

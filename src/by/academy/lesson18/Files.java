@@ -1,4 +1,4 @@
-package lesson18;
+package by.academy.lesson18;
 
 import java.io.*;
 
@@ -30,12 +30,15 @@ public class Files {
                 output.write(symbols[i]);
             }
             output.flush();
-            int size= input.available();
+            int size = input.available();
             for (int i = 0; i < size; i++) {
                 int c = input.read();
-                System.out.println((char)c);
+                System.out.println((char) c);
                 output2.write(c);
             }
+        } catch (IOException e) {
+            System.out.print("Exception");
         }
     }
 }
+

@@ -1,6 +1,4 @@
-package lesson17.Exeption;
-
-import by.academy.DealHW.Product;
+package by.academy.lesson17.Exeption;
 
 import java.util.HashMap;
 import java.util.Map;

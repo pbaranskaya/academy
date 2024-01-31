@@ -7,6 +7,7 @@ public class Berry extends Product {
     private String color;
 
     public Berry () {
+
         super();
     }
 

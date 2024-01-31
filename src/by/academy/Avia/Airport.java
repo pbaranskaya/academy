@@ -1,6 +1,4 @@
-package Avia;
-
-import by.academy.DealHW.Product;
+package by.academy.Avia;
 
 public class Airport {
 

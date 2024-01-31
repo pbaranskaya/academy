@@ -1,4 +1,4 @@
-package Avia;
+package by.academy.Avia;
 
 import java.util.Arrays;
 

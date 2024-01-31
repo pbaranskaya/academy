@@ -1,4 +1,4 @@
-package Avia;
+package by.academy.Avia;
 
 public abstract class Plane {
 
