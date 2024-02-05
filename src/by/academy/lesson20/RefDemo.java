@@ -39,11 +39,5 @@ public class RefDemo {
         System.out.println(f.apply("4"));
 
         Function<Integer, List<String>> f1 = ArrayList::new;
-
-
-
-
-
-
     }
 }
