@@ -13,5 +13,11 @@ public class Cat {
         this.color = color;
     }
 
+    private void grow(){
+        System.out.println("grows");
+    }
 
+    protected void sleep(){
+        System.out.println("sleeps"); //
+    }
 }

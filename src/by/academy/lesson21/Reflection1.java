@@ -13,7 +13,5 @@ public class Reflection1 {
             System.out.println(f);
         }
 
-
-
     }
 }

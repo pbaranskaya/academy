@@ -11,7 +11,7 @@ public class Task1 {
         Tiger t = new Tiger ("tiger",2,"red", "kind", 34,"blue");
 
         Class<Cat> catClass = Cat.class;
-        Class<Tiger> tigerClass = Tiger.class; //clazz название переменной
+        Class<Tiger> tigerClass = Tiger.class; //clazz название переменной часто используемое
 
         try {
             Field nameField = catClass.getDeclaredField("name");
@@ -42,11 +42,7 @@ public class Task1 {
 
         } catch (NoSuchFieldException | SecurityException | IllegalArgumentException e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchMethodException e) {
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
     }
