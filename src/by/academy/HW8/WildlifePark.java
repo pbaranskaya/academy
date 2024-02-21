@@ -15,7 +15,6 @@ public class WildlifePark {
 
     private final List<Animal> animals = new ArrayList<>();
 
-    private final Map<String, Class<? extends Animal>> mapTypes = new HashMap<>();
     private int capacity;
 
     public WildlifePark(int capacity) {
@@ -28,19 +27,15 @@ public class WildlifePark {
             return;
         }
         animals.add(animal);
-        Class<? extends  Animal> animalClass = animal.getClass();
-        if (!mapTypes.containsKey(animalClass.getSimpleName())){
-            mapTypes.put(animalClass.getSimpleName(), animalClass);
-        }
     }
 
-//    public int calculateFoodConsumtion(TypeOfFood typeOfFood) {
-//        if (animals == null) {
-//            return 0;
-//        }
-//        int result = 0;
-//        return animals.stream().filter(s -> s.getTypeOfFood() == typeOfFood).mapToInt(Animal::getAmountOfFoodPerDay).sum();
-//    }
+    public int calculateFoodConsumtion(TypeOfFood typeOfFood) {
+        if (animals == null) {
+            return 0;
+        }
+        int result = 0;
+        return animals.stream().filter(s -> s.getTypeOfFood() == typeOfFood).mapToInt(Animal::getAmountOfFoodPerDay).sum();
+    }
 
     public int calculateAnimalsByTypeOfFood(TypeOfFood typeOfFood) {
         if (animals == null) {
@@ -59,48 +54,32 @@ public class WildlifePark {
     }
 
 
-    public boolean getTypePredicate(Animal animal, String type){
-        if(!mapTypes.containsKey(type)) {
+    public Predicate<Animal> getTypePredicate(String type){
+        if(type == null) {
             throw new UnsupportedOperationException();
         }
-        Class<? extends Animal> clazz = mapTypes.get(type);
-        return animal instanceof clazz.;
+        switch (type){
+            case "Mammal": return a-> a instanceof Mammal;
+            case "Reptile": return a-> a instanceof Reptile;
+            case "Bird": return a-> a instanceof Bird;
+        }
+        return  a-> false;
     }
 
     public long calculateAnimalsByTypeOfAnimal(String type) {
         if (animals == null) {
             return 0;
         }
-
-//        int result = 0;
-
-        return animals.stream().filter(animal -> getTypePredicate(animal, type)).count();
-//        result = birdAnimals.size();
-//        System.out.println("Количество животных типа Bird: " + result);
-//
-//        List<Animal> mammalAnimals = animals.stream().filter(s -> s instanceof Mammal).collect(Collectors.toList());
-//        result = mammalAnimals.size();
-//        System.out.println("Количество млекопитающих типа Mammal: " + result);
-//
-//        List<Animal> retileAnimals = animals.stream().filter(s -> s instanceof Reptile).collect(Collectors.toList());
-//        result = retileAnimals.size();
-//        System.out.println("Количество животных типа Reptile: " + result);
+        return animals.stream().filter(getTypePredicate(type)).count();
     }
 
 
     public void sleep() {
-        animals.forEach(element -> element.sleep());
+        animals.forEach(Animal::sleep);
     }
 
-    public int calculateFoodConsumtion(TypeOfFood typeOfFood) {
-        if (animals == null) {
-            return 0;
-        }
-        int result = 0;
-        return animals.stream().filter(s -> s.getTypeOfFood() == typeOfFood).mapToInt(Animal::getAmountOfFoodPerDay).sum();
-    }
 
-    public List<Animal> sortByWeight() { //нов
+    public List<Animal> sortByWeight() {
         return animals.stream().sorted(Comparator.comparingInt(Animal::getWeight).reversed()).collect(Collectors.toList());
     }
 
@@ -141,22 +120,4 @@ public class WildlifePark {
                 "animals=" + animals +
                 '}';
     }
-
-    //    public static List<Animal> sortByType(TypeOfFood type){
-//        return animals.stream().sorted(TypeOfFood type).collect(Collectors.toList());
-//    }
-//
-//    private static Comparator<? extends Animal> mComparator = (a1, a2) -> a1 {
-//
-//    };
-//
-//    public static Comparator<? super Animal> getTypeComparator(TypeOfFood type){
-//        if (type == null){
-//            return null;
-//        }
-//        switch (type) {
-//            case "Mammal":
-//                return
-//        }
-//    }
 }

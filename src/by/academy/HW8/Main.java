@@ -46,13 +46,13 @@ public class Main {
         System.out.println("Количество травоядных животных: " + wl.calculateAnimalsByTypeOfFood(GRASS));
         System.out.println("Количество хищных животных: " + wl.calculateAnimalsByTypeOfFood(MEAT));
 
-        wl.calculateAnimalsByTypeOfAnimal();
+        wl.calculateAnimalsByTypeOfAnimal("Mammal");
         wl.sleep();
 
         System.out.println("===========");
         wl.sortByWeight();
         System.out.println("===========");
-        wl.sortByClass();
+        wl.sortByClass(a-> a instanceof Mammal);
         System.out.println("===========");
         System.out.println("Найти животное по типу и количеству потребляемой пищи: ");
         System.out.println(wl.findAnimalsByFoodTypeAndConsumption(MEAT,1,4));
